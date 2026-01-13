@@ -121,3 +121,85 @@ For each query, the system prints:
 Final Note ✨
 
 Regulatory documents rarely contain perfect, ready-made answers. This system reflects real-world regulatory intelligence challenges by allowing grounded summaries while preventing unsupported claims.
+
+--------------------------------------------------
+Demo Outputs 🧪
+
+Below are the full outputs produced by running:
+python main.py
+
+Query 1
+Question:
+What are the key CSRD reporting requirements for a medium-sized construction company in Germany?
+
+Answer JSON:
+{
+  "answer": "A medium-sized construction company in Germany must prepare, assure, and publish a sustainability report under the Corporate Sustainability Reporting Directive (CSRD) if it meets the size criteria and has transferable securities admitted to trading on an EU regulated market. The report must be published in a data extractable format together with relevant accompanying metadata. The company must also apply 'reasonable effort' to collect value chain information from actors in its value chain.",
+  "missing": [
+    "specific details on the format of the sustainability report",
+    "exemptions for specific industries or sectors"
+  ],
+  "sources": [
+    "240807-faqs-corporate-sustainability-reporting_en.pdf"
+  ],
+  "confidence": "medium"
+}
+
+Retrieved sources (chunks):
+['240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf']
+
+Self-check:
+Yes - The answer is a fair summary of the context and does not introduce new factual details not found in the context.
+
+--------------------------------------------------
+
+Query 2
+Question:
+Suggest one regenerative material innovation to reduce embodied carbon in building renovations, including any relevant regulatory context from GEG or EU rules.
+
+Answer JSON:
+{
+  "answer": "Using bio-based materials such as timber or bamboo to replace concrete-based exterior wall systems can greatly reduce embodied carbon and operational emissions in building renovations.",
+  "missing": [
+    "Specific regulatory context from GEG or EU rules that directly address regenerative material innovations in building renovations"
+  ],
+  "sources": [
+    "Building_materials_climate.pdf",
+    "global_status_report_buildings_construction_2023.pdf"
+  ],
+  "confidence": "medium"
+}
+
+Retrieved sources (chunks):
+['Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'global_status_report_buildings_construction_2023.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'global_status_report_buildings_construction_2023.pdf', 'Building_materials_climate.pdf']
+
+Self-check:
+Yes - The answer paraphrases the context and does not introduce new factual details not found in the context.
+
+--------------------------------------------------
+
+Query 3
+Question:
+What are the main GEG compliance risks when using heat pumps in a new office building in Berlin?
+
+Answer JSON:
+{
+  "answer": "The main GEG compliance risks when using heat pumps in a new office building in Berlin are related to the minimum share of renewable energy required for new heating systems, which is at least 65% as per the Buildings Energy Act (GEG). Additionally, landlords can pass on up to 10% of the costs for climate-friendly heating to tenants, but the monthly basic rent can be increased by a maximum of 50 cents per square meter.",
+  "missing": [
+    "specific deadlines and transitional provisions for new office buildings in Berlin",
+    "information on how to calculate the minimum share of renewable energy for the new office building"
+  ],
+  "sources": [
+    "Efficient buildings _ BMWE.pdf",
+    "faktenblatt-geg-gebaeudeenergiegesetz-en.pdf"
+  ],
+  "confidence": "medium"
+}
+
+Retrieved sources (chunks):
+['Efficient buildings _ BMWE.pdf', 'Efficient buildings _ BMWE.pdf', 'Efficient buildings _ BMWE.pdf', 'faktenblatt-geg-gebaeudeenergiegesetz-en.pdf', 'climate-action-programme-2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'climate-action-programme-2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'global_status_report_buildings_construction_2023.pdf']
+
+Self-check:
+Yes - The answer is a fair summary of the context and does not introduce new factual details not found in the context.
+--------------------------------------------------
+
