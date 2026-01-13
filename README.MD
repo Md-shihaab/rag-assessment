@@ -142,11 +142,13 @@ Answer JSON:
   "sources": [
     "240807-faqs-corporate-sustainability-reporting_en.pdf"
   ],
+
+
   "confidence": "medium"
 }
 
 Retrieved sources (chunks):
-['240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf', '240807-faqs-corporate-sustainability-reporting_en.pdf']
+['240807-faqs-corporate-sustainability-reporting_en.pdf']
 
 Self-check:
 Yes - The answer is a fair summary of the context and does not introduce new factual details not found in the context.
@@ -167,6 +169,8 @@ Answer JSON:
     "Building_materials_climate.pdf",
     "global_status_report_buildings_construction_2023.pdf"
   ],
+
+
   "confidence": "medium"
 }
 
@@ -193,6 +197,9 @@ Answer JSON:
     "Efficient buildings _ BMWE.pdf",
     "faktenblatt-geg-gebaeudeenergiegesetz-en.pdf"
   ],
+
+
+
   "confidence": "medium"
 }
 
