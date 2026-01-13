@@ -171,7 +171,7 @@ Answer JSON:
 }
 
 Retrieved sources (chunks):
-['Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'global_status_report_buildings_construction_2023.pdf', 'Building_materials_climate.pdf', 'Building_materials_climate.pdf', 'global_status_report_buildings_construction_2023.pdf', 'Building_materials_climate.pdf']
+['Building_materials_climate.pdf','global_status_report_buildings_construction_2023.pdf','global_status_report_buildings_construction_2023.pdf']
 
 Self-check:
 Yes - The answer paraphrases the context and does not introduce new factual details not found in the context.
@@ -197,9 +197,13 @@ Answer JSON:
 }
 
 Retrieved sources (chunks):
-['Efficient buildings _ BMWE.pdf', 'Efficient buildings _ BMWE.pdf', 'Efficient buildings _ BMWE.pdf', 'faktenblatt-geg-gebaeudeenergiegesetz-en.pdf', 'climate-action-programme-2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'climate-action-programme-2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'global_status_report_buildings_construction_2023.pdf']
+['Efficient buildings _ BMWE.pdf', 'faktenblatt-geg-gebaeudeenergiegesetz-en.pdf', 'climate-action-programme-2023.pdf', 'global_status_report_buildings_construction_2023.pdf', 'climate-action-programme-2023.pdf']
 
 Self-check:
 Yes - The answer is a fair summary of the context and does not introduce new factual details not found in the context.
+
+
+
+
 --------------------------------------------------
 
