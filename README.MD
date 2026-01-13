@@ -3,137 +3,121 @@ Echocene RAG Assessment – Sustainability & Construction 🌱🏗️
 Candidate: Mohammed Shihaab R
 Date: January 2026
 
-This project is a demo Retrieval-Augmented Generation (RAG) system built for the Echocene technical assessment. It answers sustainability and regulatory questions in the construction sector using only public documents and free tools, with a strong focus on accuracy and grounding.
+This repository contains a demo Retrieval-Augmented Generation (RAG) system built as part of the Echocene technical assessment. The system answers sustainability and regulatory questions in the building and construction sector using only public documents and free tools, with a strong focus on accuracy, grounding, and transparency.
 
-What This Project Shows 🎯
+--------------------------------------------------
 
-This project demonstrates how to:
+Project Objective 🎯
 
-Build a simple but reliable RAG pipeline
+The goal of this project is to demonstrate the ability to:
+- Build a simple and reliable RAG pipeline
+- Integrate a free Large Language Model (Groq)
+- Retrieve and ground answers in real regulatory documents
+- Reduce hallucinations through defensive design
+- Return structured, verifiable outputs
 
-Use a free LLM (Groq) effectively
+This is a demo and assessment project, not production software.
 
-Ground answers strictly in retrieved documents
-
-Reduce hallucinations with defensive design
-
-Return clear, structured, and verifiable outputs
-
-This is an assessment/demo project, not production software.
+--------------------------------------------------
 
 Tech Stack 🧰
 
-Python
-
-LangChain (open source)
-
-Groq API (free tier)
-
-Chroma (local vector database)
-
-Hugging Face embeddings (MiniLM)
+- Python
+- LangChain (open-source)
+- Groq API (free tier)
+- Chroma (local vector database)
+- Hugging Face embeddings (sentence-transformers/all-MiniLM-L6-v2)
 
 No paid APIs or services are used.
 
+--------------------------------------------------
+
 Knowledge Base 📚
 
-The system uses publicly available PDFs covering:
+The system uses publicly available PDF documents related to:
+- Corporate Sustainability Reporting Directive (CSRD)
+- EU sustainability and taxonomy regulations
+- German Buildings Energy Act (GEG) summaries (English)
+- Sustainable construction and building materials
 
-CSRD (Corporate Sustainability Reporting Directive)
+All documents are stored locally in the docs/ folder and embedded into a local Chroma database.
 
-EU sustainability and taxonomy regulations
+--------------------------------------------------
 
-German Buildings Energy Act (GEG) summaries (English)
+How the System Works ⚙️
 
-Sustainable construction and building materials
+1. PDF documents are loaded from the docs/ folder
+2. Documents are split into overlapping text chunks
+3. Each chunk is embedded using a Hugging Face model
+4. Embeddings are stored locally in Chroma
+5. Relevant chunks are retrieved for each query
+6. A Groq LLM generates answers using only retrieved context
+7. Answers are returned in structured JSON format
+8. A post-generation self-check verifies grounding
 
-All documents are stored locally in the docs/ folder.
-
-How It Works ⚙️
-
-PDFs are loaded and split into text chunks
-
-Chunks are embedded using a Hugging Face model
-
-Embeddings are stored locally in Chroma
-
-Relevant chunks are retrieved per query
-
-Groq generates answers using only retrieved context
-
-Answers are returned as structured JSON
-
-A self-check verifies grounding
+--------------------------------------------------
 
 Output Format 🧾
 
-Each answer is returned as JSON with:
+Each answer is returned as structured JSON with the following fields:
+- answer: grounded summary based on retrieved documents
+- missing: information not explicitly available in the documents
+- sources: document file names used
+- confidence: high, medium, or low
 
-answer – grounded summary from the documents
-
-missing – what the documents do not explicitly provide
-
-sources – document file names used
-
-confidence – high / medium / low
-
-If nothing relevant is found, the system clearly responds:
-“Insufficient information in provided documents”
+If no relevant information is found, the system returns:
+Insufficient information in provided documents
 
 Partial answers are allowed and clearly marked.
 
+--------------------------------------------------
+
 Hallucination Mitigation 🛑
 
-To reduce hallucinations, the system uses:
+The system includes lightweight safeguards:
+- Context-only prompting (no external knowledge)
+- Explicit instructions not to guess or infer
+- Structured JSON validation
+- Clear handling of missing information
+- Post-generation grounding self-check
 
-Context-only prompting
+Accuracy is prioritized over completeness.
 
-Explicit “no guessing” rules
-
-JSON output validation
-
-Clear abstention when info is missing
-
-Post-generation grounding self-check
-
-Accuracy is always prioritized over completeness.
+--------------------------------------------------
 
 Setup & Run ▶️
 
-Install dependencies with pip
+1. Install dependencies using pip
+2. Create a .env file containing your Groq API key
+3. Run the main script to build the database and execute demo queries
 
-Create a .env file with your Groq API key
+The vector database is stored locally and can be rebuilt when needed.
 
-Run the main script
-
-The vector database is stored locally and can be rebuilt if needed.
+--------------------------------------------------
 
 Environment Variables 🔐
 
-GROQ_API_KEY – your Groq API key
+- GROQ_API_KEY: your Groq API key
+- REBUILD_DB: set to 1 to force rebuilding the vector database
 
-REBUILD_DB – set to 1 to rebuild the vector database
+The .env file is excluded from version control via .gitignore.
 
-The .env file is ignored by Git.
+--------------------------------------------------
 
 Demo Queries 🔍
 
-The system runs these queries exactly as required:
-
-CSRD reporting requirements for a medium-sized construction company in Germany
-
-Regenerative material innovation to reduce embodied carbon
-
-GEG compliance risks for heat pumps in a new office building in Berlin
+The system runs the following queries exactly as specified in the assessment:
+1. What are the key CSRD reporting requirements for a medium-sized construction company in Germany?
+2. Suggest one regenerative material innovation to reduce embodied carbon in building renovations.
+3. What are the main GEG compliance risks when using heat pumps in a new office building in Berlin?
 
 For each query, the system prints:
+- Retrieved document sources
+- Final JSON answer
+- Grounding self-check result
 
-Retrieved sources
-
-Final JSON answer
-
-Grounding self-check result
+--------------------------------------------------
 
 Final Note ✨
 
-Regulatory documents rarely contain perfect, ready-made answers. This system reflects real-world constraints by allowing grounded summaries while preventing unsupported claims — a key challenge in regulatory and sustainability intelligence.
+Regulatory documents rarely contain perfect, ready-made answers. This system reflects real-world regulatory intelligence challenges by allowing grounded summaries while preventing unsupported claims.
