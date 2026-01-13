@@ -1,208 +1,139 @@
-```bash
-# Echocene RAG Assessment – Sustainability & Construction
+Echocene RAG Assessment – Sustainability & Construction 🌱🏗️
 
-**Candidate:** Mohammed Shihaab R  
-**Date:** January 2026  
+Candidate: Mohammed Shihaab R
+Date: January 2026
 
-This repository contains a Python-based Retrieval-Augmented Generation (RAG) system built as part of the Echocene technical assessment. The system provides grounded answers on sustainability and regulatory topics in the building and construction sector, with a focus on CSRD and GEG.
+This project is a demo Retrieval-Augmented Generation (RAG) system built for the Echocene technical assessment. It answers sustainability and regulatory questions in the construction sector using only public documents and free tools, with a strong focus on accuracy and grounding.
 
----
+What This Project Shows 🎯
 
-## Objective
+This project demonstrates how to:
 
-The goal of this project is to demonstrate the ability to:
+Build a simple but reliable RAG pipeline
 
-- Build a reliable RAG pipeline
-- Integrate a free LLM (Groq)
-- Generate factual, document-grounded answers
-- Reduce hallucinations through defensive design
-- Return structured and verifiable outputs
+Use a free LLM (Groq) effectively
 
----
+Ground answers strictly in retrieved documents
 
-## Tech Stack
+Reduce hallucinations with defensive design
 
-- Python  
-- LangChain (open-source)  
-- Groq API (free tier)  
-- Chroma (local vector database)  
-- Hugging Face embeddings  
-  - sentence-transformers/all-MiniLM-L6-v2  
+Return clear, structured, and verifiable outputs
 
-No paid tools or APIs are used.
+This is an assessment/demo project, not production software.
 
----
+Tech Stack 🧰
 
-## Knowledge Base
+Python
 
-The knowledge base consists of publicly available PDF documents related to:
+LangChain (open source)
 
-- Corporate Sustainability Reporting Directive (CSRD)
-- EU sustainability and taxonomy regulations
-- German Buildings Energy Act (GEG) summaries (English)
-- Sustainable construction and building materials
+Groq API (free tier)
 
-All documents are stored locally in the `docs/` folder and embedded into a local Chroma database.
+Chroma (local vector database)
 
----
+Hugging Face embeddings (MiniLM)
 
-## How the System Works
+No paid APIs or services are used.
 
-1. PDF documents are loaded and split into chunks
-2. Chunks are embedded using a Hugging Face model
-3. Embeddings are stored locally in Chroma
-4. Relevant chunks are retrieved for each query
-5. A Groq LLM generates answers using only retrieved context
-6. Answers are returned in strict JSON format
-7. A post-generation self-check verifies grounding
+Knowledge Base 📚
 
----
+The system uses publicly available PDFs covering:
 
-## Output Format
+CSRD (Corporate Sustainability Reporting Directive)
 
-Each answer is returned as JSON:
+EU sustainability and taxonomy regulations
 
-```json
-{
-  "answer": "Grounded summary based on retrieved documents",
-  "missing": ["Information not explicitly available in documents"],
-  "sources": ["document_name.pdf"],
-  "confidence": "high | medium | low"
-}
+German Buildings Energy Act (GEG) summaries (English)
 
+Sustainable construction and building materials
 
+All documents are stored locally in the docs/ folder.
 
+How It Works ⚙️
 
+PDFs are loaded and split into text chunks
 
-# Echocene RAG Assessment – Sustainability & Construction
+Chunks are embedded using a Hugging Face model
 
-Candidate: Mohammed Shihaab R  
-Date: January 2026  
+Embeddings are stored locally in Chroma
 
-This repository contains a Python-based Retrieval-Augmented Generation (RAG) system built as part of the Echocene technical assessment. The system answers sustainability and regulatory questions in the building and construction sector, with a focus on CSRD and GEG.
+Relevant chunks are retrieved per query
 
----
+Groq generates answers using only retrieved context
 
-## Objective
+Answers are returned as structured JSON
 
-The goal of this project is to demonstrate the ability to:
+A self-check verifies grounding
 
-- Build a reliable RAG pipeline
-- Integrate a free LLM (Groq)
-- Retrieve and ground answers in public documents
-- Reduce hallucinations using simple defensive techniques
-- Return structured, verifiable outputs
+Output Format 🧾
 
----
+Each answer is returned as JSON with:
 
-## Tech Stack
+answer – grounded summary from the documents
 
-- Python
-- LangChain (open-source)
-- Groq API (free tier)
-- Chroma (local vector database)
-- Hugging Face embeddings  
-  sentence-transformers/all-MiniLM-L6-v2
+missing – what the documents do not explicitly provide
 
-No paid tools or APIs are used.
+sources – document file names used
 
----
+confidence – high / medium / low
 
-## Knowledge Base
+If nothing relevant is found, the system clearly responds:
+“Insufficient information in provided documents”
 
-The system uses publicly available PDF documents related to:
+Partial answers are allowed and clearly marked.
 
-- Corporate Sustainability Reporting Directive (CSRD)
-- EU sustainability and taxonomy regulations
-- German Buildings Energy Act (GEG) summaries (English)
-- Sustainable construction and building materials
+Hallucination Mitigation 🛑
 
-All documents are stored locally in the `docs/` folder and embedded into a local Chroma database.
+To reduce hallucinations, the system uses:
 
----
+Context-only prompting
 
-## How the System Works
+Explicit “no guessing” rules
 
-1. PDF documents are loaded and split into text chunks
-2. Chunks are embedded using a Hugging Face model
-3. Embeddings are stored locally in Chroma
-4. Relevant chunks are retrieved for each query
-5. A Groq LLM generates answers using only retrieved context
-6. Answers are returned in structured JSON
-7. A post-generation self-check verifies grounding
+JSON output validation
 
----
+Clear abstention when info is missing
 
-## Output Format
+Post-generation grounding self-check
 
-Each answer is returned as JSON:
+Accuracy is always prioritized over completeness.
 
-{
-  "answer": "Grounded summary based on retrieved documents",
-  "missing": ["Information not explicitly available in documents"],
-  "sources": ["document_name.pdf"],
-  "confidence": "high | medium | low"
-}
+Setup & Run ▶️
 
-- If no relevant information is found, the answer is:
-  "Insufficient information in provided documents"
-- Partial answers are allowed and clearly marked.
+Install dependencies with pip
 
----
+Create a .env file with your Groq API key
 
-## Hallucination Mitigation
+Run the main script
 
-The system includes basic safeguards:
+The vector database is stored locally and can be rebuilt if needed.
 
-- Context-only prompting
-- Structured JSON validation
-- Explicit abstention when information is missing
-- Post-generation grounding self-check
+Environment Variables 🔐
 
-The design prioritizes accuracy over completeness.
+GROQ_API_KEY – your Groq API key
 
----
+REBUILD_DB – set to 1 to rebuild the vector database
 
-## Setup
+The .env file is ignored by Git.
 
-Install dependencies:
+Demo Queries 🔍
 
-pip install -U langchain langchain-core langchain-community langchain-text-splitters \
-langchain-chroma langchain-huggingface langchain-groq chromadb pypdf \
-sentence-transformers tenacity python-dotenv
+The system runs these queries exactly as required:
 
----
+CSRD reporting requirements for a medium-sized construction company in Germany
 
-## Environment Variables
+Regenerative material innovation to reduce embodied carbon
 
-Create a `.env` file:
-
-GROQ_API_KEY=your_groq_api_key  
-REBUILD_DB=1
-
----
-
-## Run
-
-python main.py
-
----
-
-## Demo Queries
-
-The following queries are executed exactly as required by the assignment:
-
-1. What are the key CSRD reporting requirements for a medium-sized construction company in Germany?
-2. Suggest one regenerative material innovation to reduce embodied carbon in building renovations.
-3. What are the main GEG compliance risks when using heat pumps in a new office building in Berlin?
+GEG compliance risks for heat pumps in a new office building in Berlin
 
 For each query, the system prints:
-- Retrieved sources
-- Final JSON answer
-- Grounding self-check result
 
----
+Retrieved sources
 
-## Notes
+Final JSON answer
 
-Regulatory documents rarely contain direct, answer-shaped text. This system allows summarization across multiple passages while preventing unsupported claims, reflecting real-world regulatory question-answering constraints.
+Grounding self-check result
+
+Final Note ✨
+
+Regulatory documents rarely contain perfect, ready-made answers. This system reflects real-world constraints by allowing grounded summaries while preventing unsupported claims — a key challenge in regulatory and sustainability intelligence.
